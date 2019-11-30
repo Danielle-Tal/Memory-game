@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Memory game</title>
+    <title>Pokemon Memory game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAD3AAgEAAD39/cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiIiIgAAAAAjMzMzIAAAAjMzMzMyAAACMzMjMzIAAAIiIjIiIgAAAhERIRESAAACERERERIAAAIREREREgAAACEREREgAAAAAiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AADwHwAA4A8AAMAHAADABwAAwAcAAMAHAADABwAAwAcAAOAPAADwHwAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="css/style2.css">
 </head>
 <body>
     <div class="container-fluid">
         <div class="center header">
             <h1 class="headline">
-                Memory game
-                Go Pokemon!
+                Pokemon Memory game
             </h1>
         </div>
         <div class="header">
-            <button class="headline btn btn-light" type="submit" id="reset-button">New game</button>
+            <button class=" btn btn-light" type="submit" id="reset-button">New game</button>
+            <div id= "wrongGuess">
+                <p class="guesses headGuess">Wrong guesses:</p>
+                <p class="guesses headGuess" id="counter"></p>
+            </div>
         </div>
         <div id="the-modal" class="modal popup" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -30,8 +34,9 @@
                 </div>
                 <div class="modal-body">
                     <p>Good Job! Would you like to go again?</p>
-                    <p class="headline">Wrong guesses:</p>
-                    <p class="headline" id="counter"></p>
+                    <p class="guesses">Wrong guesses:</p>
+                    <p class="guesses" id="popUpCounter"></p>
+                    <img src="images/tenor.gif">
                 </div>
                 <div class="modal-footer">
                     <button id ="newgame" type="button" class="btn btn-primary">New game</button>
@@ -40,55 +45,33 @@
                 </div>
             </div>
         </div>
-        <div class="game">
-                <div class="card" data-name="Pika">
-                    <img class="front-face" src="images\2437349-pikachu.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
+        <div id="level-modal" class="modal popup" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Choose your level</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div> 
+                            <input type = "radio" name="level" id="easy" value="easy">
+                            <label for="easy">Easy</label>
+                        </div>
+                        <div>
+                            <input type = "radio" name="level" id="med" value="med">
+                            <label for="med">Medium</label>
+                        </div>
+                        <div>
+                            <input type = "radio" name="level" id="hard" value="hard">
+                            <label for="hard">Hard</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id ="chooseLevel" type="submit" class="btn btn-primary">submit</button>
+                    </div>
+                    </div>
                 </div>
-                <div class="card" data-name="Pika">
-                    <img class="front-face" src="images\2437349-pikachu.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Jiggly">
-                    <img class="front-face" src="images\1892299-039jigglypuff.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Jiggly">
-                    <img class="front-face" src="images\1892299-039jigglypuff.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Squir">
-                    <img class="front-face" src="images\1891764-007squirtle.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Squir">
-                    <img class="front-face" src="images\1891764-007squirtle.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Charm">
-                    <img class="front-face" src="images\1891761-004charmander.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Charm">
-                    <img class="front-face" src="images\1891761-004charmander.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Balb">
-                    <img class="front-face" src="images\1891758-001bulbasaur.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Balb">
-                    <img class="front-face" src="images\1891758-001bulbasaur.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Pidg">
-                    <img class="front-face" src="images\1891821-018pidgeot.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
-                <div class="card" data-name="Pidg">
-                    <img class="front-face" src="images\1891821-018pidgeot.png">
-                    <img class="back-face" src=" C:\dev\Web\Assignments\Memory game fifth assignment\images\back-face.png">
-                </div>
+            </div>
+        <div class="game" id="game">
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
